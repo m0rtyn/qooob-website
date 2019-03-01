@@ -1,20 +1,54 @@
 html {
   font-family: 'Open Sans', sans-serif;
+  min-height: 100vh;
+  background-color: lightgray;
 }
 
 h1 {
   font-family: 'Podkova', serif;
+  width: 100%;
+  text-align: center;
+  margin-top: 0;
+}
+
+h2 {
+  font-size: 20px;
 }
 
 #app {
   display: flex;
   flex-flow: row wrap;
-  min-height: 100vh;
+  min-height: 100%;
 }
 
 .card {
+  background-color: white;
   width: 25%;
   min-height: 300px;
-  background-color: gray;
   margin: 16px;
+  border-radius: 4px;
+  padding: 16px;
+}
+
+.card > *:first-child {
+  margin-top: 0;
+}
+
+.books-amount {
+  letter-spacing: -16px;
+  position: relative;
+  font-size: 24px;
+  text-align: center;
+}
+
+.books-amount:after {
+  letter-spacing: initial;
+  margin-left: 16px;
+  content: attr(data-books-amount);
+  font-family: Podkova, serif;
+}
+
+.book-emoji {
+  display: inline-block;
+  transform: rotate(15deg);
 }

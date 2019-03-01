@@ -4,5 +4,9 @@
   "main": "index.js",
   "repository": "https://github.com/martyns0n/qooob-website",
   "author": "martyns0n <zogacc@gmail.com>",
-  "license": "MIT"
+  "license": "MIT",
+  "devDependencies": {
+    "emoji-regex": "^7.0.3",
+    "standard": "^12.0.1"
+  }
 }
