@@ -5,92 +5,70 @@ const NOT_EMOJI_REGEX = /[^\u{1f300}-\u{1f5ff}\u{1f900}-\u{1f9ff}\u{1f600}-\u{1f
 const emRegex = emojiRegex()
 const tagsAmounts = new Array(TAGS_NUMBER).fill(0)
 let data
+const cardTitle = document.createElement('H2')
+const bookNamesParagraph = document.createElement('P')
+const booksAmountParagraph = document.createElement('P')
+const booksAmount = countBooks(i)
+const tags = {
+  paper: {
+    emoji: '📗',
+    count: 0,
+  },
+  electronic: {
+    emoji: '⚡',
+    count: 0,
+  },
+  audio: {
+    emoji: '🎧',
+    count: 0,
+  },
+  manga: {
+    emoji: '🌸',
+    count: 0,
+  },
+  comics: {
+    emoji: '🖼️',
+    count: 0,
+  },
+  foreignLang: {
+    emoji: '🇰🇿',
+    count: 0,
+  },
+  rereaded: {
+    emoji: '🔄',
+    count: 0,
+  },
+  purchased: {
+    emoji: '💲',
+    count: 0,
+  },
+  favorite: {
+    emoji: '⭐',
+    count: 0,
+  },
+}
 
+// @todo export default 
 
-export default function (
-  appData,
-  booksTags
-) {
+export default function addCardsContent(appData, booksTags) {
   data = appData
   const cards = document.querySelectorAll('.card')
+  console.log(booksTags);
 
   cards.forEach((card, i) => {
     // console.log('CARD==>', card)
-    const tags = {
-      paper: {
-        emoji: '📗',
-        count: 0,
-      },
-      electronic: {
-        emoji: '⚡',
-        count: 0,
-      },
-      audio: {
-        emoji: '🎧',
-        count: 0,
-      },
-      manga: {
-        emoji: '🌸',
-        count: 0,
-      },
-      comics: {
-        emoji: '🖼️',
-        count: 0,
-      },
-      foreignLang: {
-        emoji: '🇰🇿',
-        count: 0,
-      },
-      rereaded: {
-        emoji: '🔄',
-        count: 0,
-      },
-      purchased: {
-        emoji: '💲',
-        count: 0,
-      },
-      favorite: {
-        emoji: '⭐',
-        count: 0,
-      },
-    }
-    const cardTitle = document.createElement('H2')
-    const bookNamesParagraph = document.createElement('P')
-    const tagsParagraph = document.createElement('P')
-    const booksAmountParagraph = document.createElement('P')
-    const booksAmount = countBooks(i)
+
+
 
     // parseData(booksTags, i)
-    appendCardTitle(card, cardTitle, i)
     appendBooksAmount(card, booksAmount, booksAmountParagraph)
     countTags(tags, booksTags)
-    // appendTags(tags, tagsParagraph, card)
+    appendTags(tags, card)
   })
 }
 
-// const parseData = function (booksTags, i) {
-//   for (let j = 0; j < data[i].length; j++) {
-//     // console.log()
-//     const expression = num => j < num ? false : (j - num) % 5 === 0
-//     const tagsExpr = expression(5)
-//     let cell = data[i + 1][j]
-
-//     switch (true) {
-//       case tagsExpr:
-//         const formattedTags = cell.replace(NOT_EMOJI_REGEX, '')
-//         booksTags.push(formattedTags)
-//         break
-//       default:
-//         break
-//     }
-
-//     // return data
-//   }
-// }
-
 const countBooks = function (i) {
   let booksAmount = 0;
-
   for (let j = 0; j < data[i].length; j++) {
     const bookNamesExpr = j < 3 ? false : (j - 3) % 5 === 0
     let cell = data[i + 1][j]
@@ -103,7 +81,9 @@ const countBooks = function (i) {
   return booksAmount
 }
 
-const appendTags = (tags, tagsParagraph, card) => {
+const appendTags = (tags, card) => {
+  const tagsParagraph = document.createElement('P')
+
   tagsParagraph.className = 'tags'
   for (const type in tags) {
     // console.log('TAG_TYPE==>', type)
@@ -136,7 +116,7 @@ const countTags = (tags, booksTags) => {
 
   for (let k = 0; k < booksTags.length; k++) {
     if (booksTags[k] !== '') {
-      console.log('BOOKS_TAGS==>', booksTags[k]);
+      // console.log('BOOKS_TAGS==>', booksTags[k]);
       switch (booksTags[k]) {
         case tags.paper.emoji:
           tags.paper.count = countEmoji(tags.paper.emoji);
@@ -166,7 +146,7 @@ const countTags = (tags, booksTags) => {
 const appendBooksAmount = (card, booksAmount, paragraph) => {
   paragraph.className = 'books-amount'
   for (let i = 0; i < booksAmount; i++) {
-    if (i > 0) console.log('PLAYER_REPORT==>', i, data[i])
+    // if (i > 0) console.log('PLAYER_REPORT==>', i, data[i])
     const bookEmoji = document.createElement('SPAN')
     bookEmoji.className = 'book-emoji'
     bookEmoji.append('📘')

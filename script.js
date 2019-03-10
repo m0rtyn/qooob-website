@@ -1,6 +1,8 @@
-import createCards from './ceateCards.js'
+import createCards from './createCards.js'
 import collectData from './collectData.js'
-import addCardsContent from './addCardsContent.js'
+import {
+  addCardsContent
+} from './addCardsContent.js'
 
 const app = document.getElementById('app')
 
