@@ -57,3 +57,11 @@ h2 {
   display: inline-block;
   transform: rotate(15deg);
 }
+
+.next-month {
+  width: 100%;
+  color: white;
+  display: flex;
+  justify-content: center;
+  margin-bottom: 16px;
+}

@@ -173,10 +173,16 @@ const appendBooksAmount = (card, booksAmount, paragraph) => {
     paragraph.append(bookEmoji)
   }
   paragraph.dataset.booksAmount = booksAmount === 0 ? '¯\\_(ツ)_/¯' : booksAmount
-  card.append(paragraph)
+  if (card.className !== 'next-month') card.append(paragraph)
 }
 
 const appendCardTitle = (card, cardTitle, i) => {
-  cardTitle.append(data[i + 1][1])
+  if (data[i + 1][1] !== '') {
+    cardTitle.append(data[i + 1][1])
+    card.append(cardTitle)
+    return
+  }
+  cardTitle.append('Следующий месяц')
   card.append(cardTitle)
+  card.className = 'next-month'
 }
