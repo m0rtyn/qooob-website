@@ -1,7 +1,7 @@
 html {
   font-family: 'Open Sans', sans-serif;
   min-height: 100vh;
-  background-color: lightgray;
+  background-color: #212121;
 }
 
 h1 {
@@ -18,16 +18,20 @@ h2 {
 #app {
   display: flex;
   flex-flow: row wrap;
+  justify-content: center;
   min-height: 100%;
 }
 
 .card {
   background-color: white;
-  width: 25%;
-  min-height: 300px;
+  /* wid; */
+  min-width: 200px;
+  min-height: 120px;
   margin: 16px;
   border-radius: 4px;
   padding: 16px;
+  display: flex;
+  flex-flow: column;
 }
 
 .card > *:first-child {
@@ -37,8 +41,9 @@ h2 {
 .books-amount {
   letter-spacing: -16px;
   position: relative;
-  font-size: 24px;
+  font-size: 30px;
   text-align: center;
+  margin: auto !important;
 }
 
 .books-amount:after {
