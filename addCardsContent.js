@@ -64,7 +64,7 @@ export default function (
     appendCardTitle(card, cardTitle, i)
     appendBooksAmount(card, booksAmount, booksAmountParagraph)
     countTags(tags, booksTags)
-    appendTags(tags, tagsParagraph, card)
+    // appendTags(tags, tagsParagraph, card)
   })
 }
 
